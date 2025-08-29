@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de Monedas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Conversor de Monedas</h1>
+
+    <div class="converter">
+      <input type="number" id="amount" placeholder="Cantidad">
+
+      <select id="fromCurrency"></select>
+      <button id="swap">⇄</button>
+      <select id="toCurrency"></select>
+
+      <button id="convert">Convertir</button>
+    </div>
+
+    <p id="rate"></p>
+    <p id="result"></p>
+
+    <h2>Historial</h2>
+    <ul id="history"></ul>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
