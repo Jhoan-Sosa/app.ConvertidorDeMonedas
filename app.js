@@ -6,8 +6,16 @@ const swapBtn = document.getElementById("swap");
 const result = document.getElementById("result");
 const rateInfo = document.getElementById("rate");
 const historyList = document.getElementById("history");
+const toast = document.getElementById("toast");
 
 let rates = {};
+
+// Mostrar mensaje flotante
+function showToast(message) {
+  toast.textContent = message;
+  toast.className = "show";
+  setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+}
 
 // cargar monedas
 async function loadCurrencies() {
@@ -40,18 +48,32 @@ loadCurrencies();
 convertBtn.addEventListener("click", () => {
   const from = fromCurrency.value;
   const to = toCurrency.value;
-  const amt = parseFloat(amount.value);
+  const inputVal = amount.value.trim();
 
-  if (!amt || isNaN(amt)) {
-    result.textContent = "Por favor ingrese una cantidad válida";
+  // Validar número y decimales (máx 2)
+  const regex = /^\d+(\.\d{1,2})?$/;
+
+  if (!regex.test(inputVal)) {
+    showToast("⚠️ Ingrese solo números válidos (máx. 2 decimales)");
+    return;
+  }
+
+  const amt = parseFloat(inputVal);
+
+  // Validar negativos y cero
+  if (amt <= 0) {
+    showToast("⚠️ La cantidad debe ser mayor que 0");
     return;
   }
 
   const usdAmount = amt / rates[from]; 
   const converted = usdAmount * rates[to]; 
 
-  rateInfo.textContent = `1 ${from} = ${(rates[to] / rates[from]).toFixed(4)} ${to}`;
-  result.textContent = `${amt} ${from} = ${converted.toFixed(2)} ${to}`;
+  // 👇 ahora SIEMPRE 2 decimales en tasa fija
+  rateInfo.textContent = `1 ${from} = ${(rates[to] / rates[from]).toFixed(2)} ${to}`;
+
+  // 👇 resultado final SIEMPRE con 2 decimales
+  result.textContent = `${amt.toFixed(2)} ${from} = ${converted.toFixed(2)} ${to}`;
 
   const li = document.createElement("li");
   li.textContent = result.textContent;
