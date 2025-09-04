@@ -4,19 +4,17 @@
   <meta charset="UTF-8">
   <title>Conversor de Monedas</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/recharts/umd/Recharts.min.js"></script>
 </head>
 <body>
   <div class="container">
     <h1>Conversor de Monedas</h1>
 
     <div class="converter">
-      <!-- Input como texto para validar letras y decimales -->
-      <input type="text" id="amount" placeholder="Cantidad">
-
+      <input type="text" id="amount" placeholder="Ingrese Cantidad">
       <select id="fromCurrency"></select>
       <button id="swap">⇄</button>
       <select id="toCurrency"></select>
-
       <button id="convert">Convertir</button>
     </div>
 
@@ -25,11 +23,24 @@
 
     <h2>Historial</h2>
     <ul id="history"></ul>
+    <button id="clearHistory">Limpiar historial</button>
+    <ul id="history"></ul>
+    <h2>Tendencia USD/EUR</h2>
+
+    <div id="chart-container" style="display:grid; grid-template-columns: 1fr; gap:20px;">
+      <div>
+        <h3>Tendencia USD</h3>
+        <canvas id="chartUSD"></canvas>
+      </div>
+      <div>
+        <h3>Tendencia EUR</h3>
+        <canvas id="chartEUR"></canvas>
+      </div>
+    </div>
   </div>
 
-  <!-- Mensaje flotante -->
   <div id="toast"></div>
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
