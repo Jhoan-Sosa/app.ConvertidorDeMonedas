@@ -1,167 +1,169 @@
 body { 
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #74ebd5, #9face6);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  margin: 0;
-}
-
-.container {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 20px;
-  width: 600px;
-  max-width: 95%;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  animation: fadeIn 0.8s ease;
-}
-
-.container h1 {
-  margin-bottom: 20px;
-  font-size: 28px;
-  color: #333;
-}
-
-.converter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-input, select, button {
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  outline: none;
-  transition: 0.3s;
-}
-
-input:focus, select:focus {
-  border-color: #6c63ff;
-  box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
-}
-
-button {
-  background: #6c63ff;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-button:hover {
-  background: #574bd6;
-}
-
-/* --- Ajuste agregado para armonía --- */
-.currency-select {
-  min-width: 180px;
-  text-align: left;
-  font-size: 15px;
-}
-
-#rate, #result {
-  font-size: 18px;
-  margin: 10px 0;
-  color: #444;
-}
-
-h2 {
-  margin-top: 25px;
-  color: #333333;
-}
-
-#history {
-  list-style: none;
-  padding: 0;
-  max-height: 150px;
-  overflow-y: auto;
-  text-align: left;
-}
-
-#history li {
-  background: #f0f0f0;
-  padding: 8px 12px;
-  margin: 5px 0;
-  border-radius: 8px;
-  font-size: 14px;
-}
-
-/*AJUSTE IMPORTANTE PARA LOS GRÁFICOS */
-#chart-container {
-  background: #f9f9f9;
-  border-radius: 15px;
-  padding: 10px;
-  margin-top: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
-/*EVITA QUE SE DESBORDE EL GRAFICO*/
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
-}
-
-#chart-container canvas {
-  max-width: 100%;
-  height: 280px; /* 🔧 Fijamos altura para evitar que crezca dinámicamente */
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-#toast {
-  visibility: hidden;
-  min-width: 250px;
-  margin-left: -125px;
-  background-color: #ff4d4d;
-  color: white;
-  text-align: center;
-  border-radius: 8px;
-  padding: 12px;
-  position: fixed;
-  z-index: 1;
-  left: 50%;
-  bottom: 30px;
-  font-size: 16px;
-}
-
-#toast.show {
-  visibility: visible;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-@keyframes fadein {
-  from { bottom: 0; opacity: 0; }
-  to { bottom: 30px; opacity: 1; }
-}
-
-@keyframes fadeout {
-  from { bottom: 30px; opacity: 1; }
-  to { bottom: 0; opacity: 0; }
-}
-
-#clearHistory {
-  background: #6c63ff;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 10px;
-  margin-top: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-#clearHistory:hover {
-  background: #e63939;
-}
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #9face6);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 0;
+  }
+  
+  .contenedor {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    width: 600px;
+    max-width: 95%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 0.8s ease;
+  }
+  
+  .contenedor h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+  }
+  
+  .conversor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  input, select, button {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+  }
+  
+  input:focus, select:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+  }
+  
+  button {
+    background: #6c63ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    background: #574bd6;
+  }
+  
+  /* --- Ajuste agregado para armonía --- */
+  select {
+    min-width: 180px;
+    text-align: left;
+    font-size: 15px;
+  }
+  
+  #tasa, #resultado {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #444;
+  }
+  
+  h2 {
+    margin-top: 25px;
+    color: #333333;
+  }
+  
+  #historial {
+    list-style: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    text-align: left;
+  }
+  
+  #historial li {
+    background: #f0f0f0;
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  
+  /* 🎨 Ajuste importante para los gráficos */
+  #contenedor-graficos {
+    background: #f9f9f9;
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  #contenedor-graficos canvas {
+    max-width: 100%;
+    height: 280px; /* 🔧 Fijamos altura */
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* 🔔 Notificación flotante */
+  #notificacion {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #ff4d4d;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 12px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 16px;
+  }
+  
+  #notificacion.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  @keyframes fadein {
+    from { bottom: 0; opacity: 0; }
+    to { bottom: 30px; opacity: 1; }
+  }
+  
+  @keyframes fadeout {
+    from { bottom: 30px; opacity: 1; }
+    to { bottom: 0; opacity: 0; }
+  }
+  
+  /* 🗑️ Botón limpiar historial */
+  #limpiarHistorial {
+    background: #6c63ff;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  
+  #limpiarHistorial:hover {
+    background: #e63939;
+  }
+  
