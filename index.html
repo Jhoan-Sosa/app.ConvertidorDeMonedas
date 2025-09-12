@@ -4,43 +4,53 @@
   <meta charset="UTF-8">
   <title>Conversor de Monedas</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/recharts/umd/Recharts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div class="container">
+  <div class="contenedor">
     <h1>Conversor de Monedas</h1>
 
-    <div class="converter">
-      <input type="text" id="amount" placeholder="Ingrese Cantidad">
-      <select id="fromCurrency"></select>
-      <button id="swap">⇄</button>
-      <select id="toCurrency"></select>
-      <button id="convert">Convertir</button>
+    <!-- Botón modo oscuro -->
+    <div style="display:flex; justify-content:center; gap:10px; margin-bottom:12px;">
+      <button id="modoOscuroToggle">🌙 Modo Oscuro</button>
     </div>
 
-    <p id="rate"></p>
-    <p id="result"></p>
+    <!-- Conversor -->
+    <div class="conversor">
+      <input type="text" id="cantidad" placeholder="Ingrese cantidad">
+      <select id="monedaOrigen"></select>
+      <button id="intercambiar">⇄</button>
+      <select id="monedaDestino"></select>
+      <button id="convertir">Convertir</button>
+    </div>
 
+    <!-- Resultado -->
+    <p id="tasa"></p>
+    <p id="resultado"></p>
+
+    <!-- Historial -->
     <h2>Historial</h2>
-    <ul id="history"></ul>
-    <button id="clearHistory">Limpiar historial</button>
-    <ul id="history"></ul>
-    <h2>Tendencia USD/EUR</h2>
+    <ul id="historial"></ul>
+    <button id="limpiarHistorial">Limpiar historial</button>
 
-    <div id="chart-container" style="display:grid; grid-template-columns: 1fr; gap:20px;">
+    <!-- Gráficos -->
+    <h2>Tendencia USD / EUR</h2>
+    <div id="contenedor-graficos" style="display:grid; grid-template-columns: 1fr; gap:20px;">
       <div>
         <h3>Tendencia USD</h3>
-        <canvas id="chartUSD"></canvas>
+        <canvas id="graficoUSD"></canvas>
       </div>
       <div>
         <h3>Tendencia EUR</h3>
-        <canvas id="chartEUR"></canvas>
+        <canvas id="graficoEUR"></canvas>
       </div>
     </div>
   </div>
 
-  <div id="toast"></div>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Notificación flotante -->
+  <div id="notificacion" aria-live="polite"></div>
+
+  <!-- Script principal -->
   <script src="app.js"></script>
 </body>
 </html>
