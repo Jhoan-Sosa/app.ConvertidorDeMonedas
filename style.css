@@ -1,4 +1,4 @@
-body { 
+body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #74ebd5, #9face6);
     min-height: 100vh;
@@ -7,8 +7,9 @@ body {
     align-items: center;
     padding: 20px;
     margin: 0;
+    color: #333;
   }
-  
+ 
   .contenedor {
     background: #ffffff;
     padding: 30px;
@@ -19,13 +20,13 @@ body {
     text-align: center;
     animation: fadeIn 0.8s ease;
   }
-  
+ 
   .contenedor h1 {
     margin-bottom: 20px;
     font-size: 28px;
     color: #333;
   }
-  
+ 
   .conversor {
     display: flex;
     flex-wrap: wrap;
@@ -33,7 +34,7 @@ body {
     justify-content: center;
     margin-bottom: 20px;
   }
-  
+ 
   input, select, button {
     padding: 12px;
     font-size: 16px;
@@ -41,13 +42,15 @@ body {
     border-radius: 10px;
     outline: none;
     transition: 0.3s;
+    color: #333;
+    background-color: #fff;
   }
-  
+ 
   input:focus, select:focus {
     border-color: #6c63ff;
     box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
   }
-  
+ 
   button {
     background: #6c63ff;
     color: white;
@@ -55,70 +58,163 @@ body {
     cursor: pointer;
     font-weight: bold;
   }
-  
+ 
   button:hover {
     background: #574bd6;
   }
-  
-  /* --- Ajuste agregado para armonía --- */
-  select {
-    min-width: 180px;
-    text-align: left;
-    font-size: 15px;
-  }
-  
+ 
   #tasa, #resultado {
     font-size: 18px;
     margin: 10px 0;
     color: #444;
   }
-  
+ 
   h2 {
     margin-top: 25px;
     color: #333333;
   }
-  
+ 
+  /* ===================== */
+  /* ESTILOS HISTORIAL     */
+  /* ===================== */
   #historial {
     list-style: none;
     padding: 0;
-    max-height: 150px;
+    margin: 0;
+    max-height: 200px;
     overflow-y: auto;
-    text-align: left;
+    text-align: center;
   }
-  
+ 
   #historial li {
-    background: #f0f0f0;
+    background: #f5f5f5;
+    color: #111111;
+    margin: 6px 0;
     padding: 8px 12px;
-    margin: 5px 0;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    transition: background 0.3s, color 0.3s;
   }
-  
-  /* 🎨 Ajuste importante para los gráficos */
-  #contenedor-graficos {
-    background: #f9f9f9;
-    border-radius: 15px;
-    padding: 10px;
-    margin-top: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  
+ 
+  #historial li .date-time {
+    display: block;
+    font-size: 12px;
+    color: #555555;
+    font-weight: bold;
+    margin-top: 4px;
+  }
+ 
+  /* ===================== */
+  /* HISTORIAL EN MODO OSCURO */
+  /* ===================== */
+  body.modo-oscuro #historial li {
+    background: #2b2b2b;
+    color: #f5f5f5;
+  }
+ 
+  body.modo-oscuro #historial li .date-time {
+    color: #bbbbbb;
+  }
+ 
+  /* ============================ */
+  /* MODAL CONFIRMACIÓN           */
+  /* ============================ */
+  #confirmModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
   }
-  
-  #contenedor-graficos canvas {
-    max-width: 100%;
-    height: 280px; /* 🔧 Fijamos altura */
+ 
+  #confirmModal.show {
+    opacity: 1;
+    pointer-events: auto;
   }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+ 
+  #confirmModal .modal-content {
+    background: #fff;
+    color: #111;
+    padding: 25px 30px;
+    border-radius: 15px;
+    text-align: center;
+    animation: fadeIn 0.4s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
-  
-  /* 🔔 Notificación flotante */
+ 
+  #confirmModal .modal-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+ 
+  #confirmModal .modal-buttons button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.2s;
+  }
+ 
+  #confirmModal .modal-buttons #confirmYes {
+    background-color: #6c63ff;
+    color: white;
+  }
+ 
+  #confirmModal .modal-buttons #confirmYes:hover {
+    background-color: #574bd6;
+  }
+ 
+  #confirmModal .modal-buttons #confirmNo {
+    background-color: #e63939;
+    color: white;
+  }
+ 
+  #confirmModal .modal-buttons #confirmNo:hover {
+    background-color: #c53030;
+  }
+ 
+  /* ============================ */
+  /* MODAL EN MODO OSCURO         */
+  /* ============================ */
+  body.modo-oscuro #confirmModal .modal-content {
+    background: #2b2b2b;
+    color: #f5f5f5;
+  }
+ 
+  body.modo-oscuro #confirmModal .modal-buttons #confirmYes {
+    background-color: #4f46e5;
+    color: #fff;
+  }
+ 
+  body.modo-oscuro #confirmModal .modal-buttons #confirmYes:hover {
+    background-color: #4338ca;
+  }
+ 
+  body.modo-oscuro #confirmModal .modal-buttons #confirmNo {
+    background-color: #b91c1c;
+    color: #fff;
+  }
+ 
+  body.modo-oscuro #confirmModal .modal-buttons #confirmNo:hover {
+    background-color: #991b1b;
+  }
+ 
+  /* ============================ */
+  /* NOTIFICACIÓN                 */
+  /* ============================ */
   #notificacion {
     visibility: hidden;
     min-width: 250px;
@@ -134,36 +230,47 @@ body {
     bottom: 30px;
     font-size: 16px;
   }
-  
+ 
   #notificacion.show {
     visibility: visible;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
   }
-  
+ 
+  /* ============================ */
+  /* ANIMACIONES                  */
+  /* ============================ */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+ 
   @keyframes fadein {
     from { bottom: 0; opacity: 0; }
     to { bottom: 30px; opacity: 1; }
   }
-  
+ 
   @keyframes fadeout {
     from { bottom: 30px; opacity: 1; }
     to { bottom: 0; opacity: 0; }
   }
-  
-  /* 🗑️ Botón limpiar historial */
-  #limpiarHistorial {
-    background: #6c63ff;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 10px;
-    margin-top: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
+ 
+  /* ============================ */
+  /* MODO OSCURO GENERAL          */
+  /* ============================ */
+  body.modo-oscuro {
+    background: #1a1a1a;
+    color: #f0f0f0;
   }
-  
-  #limpiarHistorial:hover {
-    background: #e63939;
+ 
+  body.modo-oscuro .contenedor {
+    background: #2a2a2a;
+    color: #fff;
   }
-  
+
+  body.modo-oscuro input,
+  body.modo-oscuro select,
+  body.modo-oscuro button {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #666;
+  }
