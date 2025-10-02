@@ -7,44 +7,73 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div class="contenedor">
-    <h1>Conversor de Monedas</h1>
+  <!-- CONTENEDOR FLEX: Conversor + Perfil -->
+  <div style="display:flex; justify-content:center; align-items:flex-start; gap:30px; flex-wrap:wrap; margin-top:20px;">
 
-    <!-- Botón modo oscuro -->
-    <div style="display:flex; justify-content:center; gap:10px; margin-bottom:12px;">
-      <button id="modoOscuroToggle">🌙 Modo Oscuro</button>
-    </div>
+    <!-- BLOQUE CONVERSOR -->
+    <div class="contenedor" style="max-width:600px; flex:1;">
+      <h1>Conversor de Monedas</h1>
 
-    <!-- Conversor -->
-    <div class="conversor">
-      <input type="text" id="cantidad" placeholder="Ingrese cantidad">
-      <select id="monedaOrigen"></select>
-      <button id="intercambiar">⇄</button>
-      <select id="monedaDestino"></select>
-      <button id="convertir">Convertir</button>
-    </div>
-
-    <!-- Resultado -->
-    <p id="tasa"></p>
-    <p id="resultado"></p>
-
-    <!-- Historial -->
-    <h2>Historial</h2>
-    <ul id="historial"></ul>
-    <button id="limpiarHistorial">Limpiar historial</button>
-
-    <!-- Gráficos -->
-    <h2>Tendencia USD / EUR</h2>
-    <div id="contenedor-graficos" style="display:grid; grid-template-columns: 1fr; gap:20px;">
-      <div>
-        <h3>Tendencia USD</h3>
-        <canvas id="graficoUSD"></canvas>
+      <!-- Botón modo oscuro -->
+      <div style="display:flex; justify-content:center; gap:10px; margin-bottom:12px;">
+        <button id="modoOscuroToggle">🌙 Modo Oscuro</button>
       </div>
-      <div>
-        <h3>Tendencia EUR</h3>
-        <canvas id="graficoEUR"></canvas>
+
+      <!-- Conversor -->
+      <div class="conversor">
+        <input type="text" id="cantidad" placeholder="Ingrese cantidad">
+        <select id="monedaOrigen"></select>
+        <button id="intercambiar">⇄</button>
+        <select id="monedaDestino"></select>
+        <button id="convertir">Convertir</button>
+      </div>
+
+      <!-- Resultado -->
+      <p id="tasa"></p>
+      <p id="resultado"></p>
+
+      <!-- Historial -->
+      <h2>Historial</h2>
+      <ul id="historial"></ul>
+
+      <!-- Botones alineados -->
+      <div style="margin-top:5px; display:flex; gap:8px; justify-content:center;">
+        <button id="limpiarHistorial">🗑️ Limpiar historial</button>
+        <button id="exportarHistorial">📤 Exportar Historial</button>
+        <input type="file" id="importarHistorial" accept=".json" style="display:none;">
+        <button id="cargarHistorial">📥 Cargar Historial</button>
+      </div>
+
+      <!-- Gráficos -->
+      <h2>Tendencia USD / EUR</h2>
+      <div id="contenedor-graficos" style="display:grid; grid-template-columns: 1fr; gap:20px;">
+        <div>
+          <h3>Tendencia USD</h3>
+          <canvas id="graficoUSD"></canvas>
+        </div>
+        <div>
+          <h3>Tendencia EUR</h3>
+          <canvas id="graficoEUR"></canvas>
+        </div>
       </div>
     </div>
+
+    <!-- BLOQUE PERFIL -->
+    <section id="seccionPerfil" style="max-width:350px; flex:1; margin-bottom:18px;">
+      <h2>Perfil de Usuario</h2>
+
+      <div style="display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap;">
+        <select id="selectUsuarios" style="min-width:220px;"></select>
+        <button id="btnNuevoUsuario">+ Nuevo</button>
+        <button id="btnEditarUsuario">✏️ Editar</button>
+        <button id="btnEliminarUsuario">🗑️ Eliminar</button>
+      </div>
+
+      <div id="perfilCard" style="margin-top:12px; text-align:left; max-width:300px; margin-left:auto; margin-right:auto;">
+        <!-- Rellenado dinámico -->
+      </div>
+    </section>
+
   </div>
 
   <!-- Notificación flotante -->
@@ -54,10 +83,3 @@
   <script src="app.js"></script>
 </body>
 </html>
-
-<!-- Exportar / Importar historial -->
-<div style="margin-top:10px; display:flex; gap:10px; justify-content:center;">
-  <button id="exportarHistorial">📤 Exportar Historial</button>
-  <input type="file" id="importarHistorial" accept=".json" style="display:none;">
-  <button id="cargarHistorial">📥 Cargar Historial</button>
-</div>
