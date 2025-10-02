@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "u_20250930011419919069",
+      "name": "Sosa",
+      "email": "sosa@test.com",
+      "prefCurrency": "PEN",
+      "created": "2025-09-30T01:14:19.919442",
+      "historial": []
+    },
+    {
+      "id": "u_20250930020730405068",
+      "name": "PRUEBA_LOCAL",
+      "email": "prueba@local",
+      "prefCurrency": "USD",
+      "created": "2025-09-30T02:07:30.405191",
+      "historial": []
+    },
+    {
+      "id": "u_20250930020824329888",
+      "name": "Pedri Lopez",
+      "email": "suarez@gmail",
+      "prefCurrency": "EUR",
+      "created": "2025-09-30T02:08:24.329933",
+      "historial": []
+    },
+    {
+      "id": "u_20250930021011315539",
+      "name": "Lamine",
+      "email": "yamal@gmail",
+      "prefCurrency": "PEN",
+      "created": "2025-09-30T02:10:11.315577",
+      "historial": []
+    }
+  ]
+}
