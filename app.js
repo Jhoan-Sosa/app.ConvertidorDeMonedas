@@ -1,5 +1,4 @@
-// app.js - Versión refactorizada
-// Conexión a API (cambiar si es necesario)
+
 const API_URL = "http://localhost:5000"; // pon null si prefieres forzar solo localStorage
 
 // -----------------------------
