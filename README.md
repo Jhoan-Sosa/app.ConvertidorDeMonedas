@@ -2,9 +2,9 @@
 
 ## Integrantes:
 - Izquierdo Quintana Miguel Angel  
-- Raymundo Rafael  
+- Raymundo Rafael Mirko Josue 
 - Serrano Victor Manuel  
-- Sosa Jhoan  
+- Sosa Porras Jhoan  
 
 ## Nueva Funcionalidad:
 La aplicación incorpora un **backend en Python (Flask)** para gestionar usuarios y su historial de conversiones.  
